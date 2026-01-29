@@ -8,16 +8,10 @@ export const App = () => {
   const [query, setQuery] = useState('');
   const queryToken = query.trim().toLowerCase();
   const visibleMovies = moviesFromServer.filter(movie => {
-    const titleCheck = movie.title.toLowerCase().includes(queryToken);
-    const descriptionCheck = movie.description
-      .toLowerCase()
-      .includes(queryToken);
-
-    if (titleCheck || descriptionCheck) {
-      return true;
-    }
-
-    return false;
+    return (
+      movie.title.toLowerCase().includes(queryToken) ||
+      movie.description.toLowerCase().includes(queryToken)
+    );
   });
 
   return (
